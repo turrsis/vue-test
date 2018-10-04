@@ -1,5 +1,6 @@
 <template>
-  <div id='LAYOUT_MENU' style="margin: 10px; padding: 10px;">
+  <div>
+      MENU<br><br><br><br><br>
     <nuxt/>
   </div>
 </template>
@@ -14,7 +15,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  padding:70px;
 }
 
 *, *:before, *:after {

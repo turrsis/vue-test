@@ -1,80 +1,58 @@
 <template>
-  <div class="VueToNuxtLogo">
-    <div class="Triangle Triangle--two"/>
-    <div class="Triangle Triangle--one"/>
-    <div class="Triangle Triangle--three"/>
-    <div class="Triangle Triangle--four"/>
+  <div>
+    <div class="simple-page">
+        <Container @drop="onDrop">            
+          <Draggable v-for="item in items" :key="item.id">
+            <div class="draggable-item">
+              {{item.data}}
+            </div>
+          </Draggable>
+        </Container>
+    </div>
   </div>
 </template>
 
-<style>
-.VueToNuxtLogo {
-  display: inline-block;
-  animation: turn 2s linear forwards 1s;
-  transform: rotateX(180deg);
-  position: relative;
-  overflow: hidden;
-  height: 180px;
-  width: 245px;
-}
+<script>
+import { Container, Draggable } from "vue-smooth-dnd";
 
-.Triangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
+function applyDrag (arr, dragResult) {
+  const { removedIndex, addedIndex, payload } = dragResult
+  if (removedIndex === null && addedIndex === null) return arr
 
-.Triangle--one {
-  border-left: 105px solid transparent;
-  border-right: 105px solid transparent;
-  border-bottom: 180px solid #41B883;
-}
+  const result = [...arr]
+  let itemToAdd = payload
 
-.Triangle--two {
-  top: 30px;
-  left: 35px;
-  animation: goright 0.5s linear forwards 3.5s;
-  border-left: 87.5px solid transparent;
-  border-right: 87.5px solid transparent;
-  border-bottom: 150px solid #3B8070;
-}
-
-.Triangle--three {
-  top: 60px;
-  left: 35px;
-  animation: goright 0.5s linear forwards 3.5s;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-bottom: 120px solid #35495E;
-}
-
-.Triangle--four {
-  top: 120px;
-  left: 70px;
-  animation: godown 0.5s linear forwards 3s;
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 60px solid #fff;
-}
-
-@keyframes turn {
-  100% {
-    transform: rotateX(0deg);
+  if (removedIndex !== null) {
+    itemToAdd = result.splice(removedIndex, 1)[0]
   }
-}
 
-@keyframes godown {
-  100% {
-    top: 180px;
+  if (addedIndex !== null) {
+    result.splice(addedIndex, 0, itemToAdd)
   }
-}
 
-@keyframes goright {
-  100% {
-    left: 70px;
+  return result
+};
+
+function generateItems (count, creator) {
+  const result = []
+  for (let i = 0; i < count; i++) {
+    result.push(creator(i))
   }
-}
-</style>
+  return result
+};
 
+export default {
+  name: "Simple",
+  components: { Container, Draggable },
+  data: function() {
+    return {
+      items: generateItems(10, i => ({ id: i, data: "Draggable " + i }))
+    };
+  },
+  methods: {
+    onDrop: function(dropResult) {
+      this.items = applyDrag(this.items, dropResult);
+    }
+  }
+};
+</script>
