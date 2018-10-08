@@ -15,18 +15,7 @@
     "dev-debug": "node --inspect node_modules/nuxt/bin/nuxt"
   },
   "dependencies": {
-    "nuxt": "^1.4.2",
-    "vue-smooth-dnd": "latest",
-    "axios": "latest",
-    "vue-style-loader": "latest"
+    "vue": "^2.5.17"
   },
-  "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0"
-  }
+  "devDependencies": {}
 }
