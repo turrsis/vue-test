@@ -5,17 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "sourceMaps": true,
             "type": "node",
             "request": "launch",
             "name": "Launch via NPM",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script",
-                "dev-debug"
+                "start"
             ],
-            /*"protocol": "inspector",*/
             "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            /*"program": "${workspaceFolder}\\dev"*/
+            /*"program": "${workspaceFolder}\\",*/
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "dev"
+            ],
+            /*"protocol": "inspector"*/
+            /*"port": 9229*/
         }
     ]
 }
