@@ -8,10 +8,23 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "debug": "node --inspect node_modules/nuxt/bin/nuxt",
+    "dev-debug": "node --inspect node_modules/nuxt/bin/nuxt"
   },
   "dependencies": {
-    "nuxt": "^2.3.4"
+    "nuxt": "latest",
+    "axios": "^0.18.0",
+    "typescript": "^3.2.2",
+    "vuetify": "^1.4.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.15.3"
+  }
 }
