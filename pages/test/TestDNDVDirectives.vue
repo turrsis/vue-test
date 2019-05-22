@@ -2,7 +2,7 @@
     <div
         id="TestDNDVDirectives"
         style="width:400px"
-        v-designer.BLOG="{'dragType': 'sortable', 'dragIn': true}"
+        v-designer
     >
         <BlogPosts id="BlogPosts" p="0" v-for="post in posts03" v-bind:key="post.id" v-bind:post="post">
         </BlogPosts>
